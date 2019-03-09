@@ -14,6 +14,8 @@ Data is then passed to Web Server/WebSocket program, which then pushes the data 
 
 Note : Currently project is configured for 2 vehicles only, it can be easily extended for more (code changes will be required).
 
+![alt text](https://github.com/wasim-ahmed/SIG/blob/master/SIG Diagram.jpg)
+
 # Build Info
 
 Projects are build with MinGW 4.8.1 on Windows 10 .
@@ -26,7 +28,9 @@ This project is a combination of 3 sub projects:
 	place required DLL's where executables are kept. 	
 	
 	buid the server.exe using commands :
+	
 	gcc -c server.c -I ..\lws-x64-22747226\include -I ..\wolfssl-3.15.3 -I ..\wolfssl-3.15.3\wolfssl
+	
 	gcc -o server.exe server.o -l ws2_32 -l websockets -L ..\lws-x64-22747226\bin\Release
 	
 2. SUMO
