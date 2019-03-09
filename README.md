@@ -1,9 +1,9 @@
-#SIG (SUMO Interface with Google Maps)
+# SIG (SUMO Interface with Google Maps)
 
 This project can be used to visualize SUMO interface on Google Map. The SUMO is used to create a traffic simulator, SUMO data is retrieved by TRACI.
 Data is then passed to Web Server/WebSocket program, which then pushes the data to Web Socket Server for getting it plotted on Google Map. 
 
-#SetUp
+# SetUp
 
 1. Start the server.exe located in "\Webserver\simple-libwebsockets-example-master" . This will start the Web server.
 2. Open the web browser on "localhost:8000" . Do not wait for map to load , proceed to next step. 
@@ -14,7 +14,7 @@ Data is then passed to Web Server/WebSocket program, which then pushes the data 
 
 Note : Currently project is configured for 2 vehicles only, it can be easily extended for more (code changes will be required).
 
-#Build Info
+# Build Info
 
 Projects are build with MinGW 4.8.1 on Windows 10 .
 
@@ -39,7 +39,7 @@ This project is a combination of 3 sub projects:
 	Remember to place required DLL's where executables are kept	
 	
 
-#Software Components
+# Software Components
 
 1. libwebsockets binary for windows @ https://ci.appveyor.com/project/lws-team/libwebsockets 
 2. WolSSL @ https://www.wolfssl.com/
