@@ -14,7 +14,7 @@ Data is then passed to Web Server/WebSocket program, which then pushes the data 
 
 Note : Currently project is configured for 2 vehicles only, it can be easily extended for more (code changes will be required).
 
-![alt text](https://github.com/wasim-ahmed/SIG/blob/master/SIG Diagram.jpg)
+![alt text](https://github.com/wasim-ahmed/SIG/blob/master/SIG%20Diagram.jpg)
 
 # Build Info
 
