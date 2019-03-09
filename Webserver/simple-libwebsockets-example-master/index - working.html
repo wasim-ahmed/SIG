@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Websocket example</title>
+
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+</head>
+
+
+<body>
+<div id="map" style="width: 1200px; height: 600px;"></div>
+<p id="num"></p>
+
+<script>
+  var socket = new WebSocket( "ws://" + document.domain + ':' + location.port, "example-protocol" );
+ 
+    var mymap = new google.maps.Map(document.getElementById('map'), {
+      //zoom: 10,
+	  zoom: 17,
+      //center: new google.maps.LatLng(-33.92, 151.25),lat: 18.5783, lng: 73.6827 18.5810,73.6827
+	  center: new google.maps.LatLng(18.5710, 73.6827),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+	//var infowindow = new google.maps.InfoWindow();
+
+ function update(msg) { 
+  
+    document.getElementById("num").innerHTML = msg; 
+	
+	var loc,lat1,lng1,lat2,lng2;
+	loc = msg;
+	lat1 = loc.slice(0,7);
+	lng1 = loc.slice(8,15);
+	lat2 = loc.slice(16,23);
+	lng2 = loc.slice(24,31);
+	
+	var marker1 = new google.maps.Marker({position: new google.maps.LatLng(lat1,lng1),map: mymap});
+	var marker2 = new google.maps.Marker({position: new google.maps.LatLng(lat2,lng2),map: mymap});
+
+	}
+  socket.onopen = function() { console.log("socket open"); update("open"); }
+  socket.onclose = function() { console.log("socket close"); update("closed"); }
+  socket.onmessage = function(msg) { console.log("socket message: " + msg.data); update(msg.data); }
+</script>
+</body>
+</html>

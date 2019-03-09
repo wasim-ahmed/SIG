@@ -1,0 +1,15 @@
+<!-- TRAFFIC GENERATION-->
+<routes>
+<!-- Create Vehicle Types-->
+	<vType id="Car1" accel="0.275" decel="30" length="5.0" minGap="0" maxspeed="50.0" sigma="0" />
+	<vType id="Car2" accel="0.2" decel="30" length="5.0" minGap="0" maxspeed="50.0" sigma="0" />
+	
+<!--Traffic Routes-->	
+	<route id="Route1" edges="100109190 239840602#5 239840602#6 239840577"/>
+	<route id="Route2" edges="239840624 239840602#3 239840602#4 239840602#5 239840602#6 239840577"/>
+	
+<!--Traffic Demand-->	
+	<vehicle id="veh1" depart="2" departLane="0" route="Route1" type="Car1" color="0,1,0"/>
+	<vehicle  id="veh2" depart="2" departLane="0" route="Route2" type="Car2" color="1,0,0"/>
+	
+</routes>

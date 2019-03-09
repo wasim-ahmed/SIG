@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps plotting with libwebsockets</title> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+	<style type="text/css">
+           * { margin: 5px; }
+    </style>
+</head> 
+<body>
+  <div id="map" style="width: 1200px; height: 600px;"></div>
+
+        <fieldset>
+            <legend>Connect to your device</legend>
+            <input type="hidden" name="input" id="input" />
+            <input type="button" name="inpuBtn" id="inputBtn" value="Connect" />
+            <div><u>Server responses</u></div>
+            <div id="output"></div>
+        </fieldset>
+  
+
+  <script async type="text/javascript">
+  
+      var mymap = new google.maps.Map(document.getElementById('map'), {
+      //zoom: 10,
+	  zoom: 17,
+      //center: new google.maps.LatLng(-33.92, 151.25),lat: 18.5783, lng: 73.6827
+	  center: new google.maps.LatLng(18.5783, 73.6827),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+	    var infowindow = new google.maps.InfoWindow();
+  
+			var loc,lat,lng;
+            // Putting the js here after the dom is available in the browser because not using a framework
+            var PORT = 8000;
+            var ws = new WebSocket("ws://localhost:" + PORT );//Change to the server ip address
+            var input    = document.getElementById("input");
+            var inputBtn = document.getElementById("inputBtn");
+            var output   = document.getElementById("output");
+
+            inputBtn.onclick = function( evt ){
+                input.value = 'hi there';//should have some value
+				sendMessage();
+            };
+
+            input.onkeypress = function( evt ){
+                var code = evt.keyCode ? evt.keyCode : evt.which;
+                if( code == 13 )
+				{
+					input.value = 'hi there';//should have some value
+					sendMessage();	
+				}
+					
+            };
+			
+			function resolveAfter2Seconds() {    
+				return new Promise(resolve => {		
+				setTimeout(() => {
+				//console.log("inside timeout");
+				 resolve('resolved');
+				}, 1000);
+			  });
+			}
+			
+			async function mark(lat,lng){
+			var marker = new google.maps.Marker({position: new google.maps.LatLng(lat,lng),map: mymap});
+			var result = await resolveAfter2Seconds();
+			//console.log(result);
+			input.value = 'hi there';//should have some value
+			sendMessage();
+			}
+			
+            ws.onmessage = function( evt ){
+                //addMessage( evt.data ); //do not flood the web page
+				loc = evt.data;
+				lat = loc.slice(0,7);
+				lng = loc.slice(8,15);
+				console.log("msg received successfully",evt.data);
+								
+				mark(lat,lng);
+
+			};
+
+            ws.onerror = function( evt ) { 
+                addMessage( '<i>WebSocket error :(</i>' );
+				
+            };
+
+            ws.onopen = function( evt ) { 
+                addMessage( '<i>Connected</i>' );
+				
+            };
+
+            ws.onclose = function( evt ) { 
+                addMessage( '<i>Disconnected</i>' );
+				
+            };
+
+            function sendMessage( ){
+                ws.send(input.value);
+                input.value = '';
+				//console.log("msg sent successfully");
+            }
+
+            function addMessage( msg ){
+                output.innerHTML += msg + '<br />'; 
+            }
+  </script>
+</body>
+</html>
