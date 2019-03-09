@@ -23,6 +23,7 @@ Projects are build with MinGW 4.8.1 on Windows 10 .
 This project is a combination of 3 sub projects:
 
 1. Webserver
+
 	This project contains the code for Web Server & Web Socket Server. It uses libwebsockets & wolfssl project. We can create its binary from cmd line.
 	It receives the data from TraciClient (via Web Socket Client) & pass the data to HTML/JavaScript code for plotting it on Google Map. Remember to 
 	place required DLL's where executables are kept. 	
@@ -34,10 +35,12 @@ This project is a combination of 3 sub projects:
 	gcc -o server.exe server.o -l ws2_32 -l websockets -L ..\lws-x64-22747226\bin\Release
 	
 2. SUMO
+
 	SUMO needs to be configured on the system. Then by writing the configuration file we can create the desired traffic simulations.
 	Note: Code is not required in this project , only configuration files needs to be created.
 	
 3. TraciClient
+
 	This communicates with SUMO through a socket to get the data. Then using the web Socket api's it pass the data to WebServer program.
 	This is coded in C++ , build the project by using makefile. Note that this project requires libwebsocket, wolfssl & xerses projects.
 	Remember to place required DLL's where executables are kept	
