@@ -49,7 +49,7 @@ This project is a combination of 3 sub projects:
 # Software Components
 
 1. libwebsockets binary for windows @ https://ci.appveyor.com/project/lws-team/libwebsockets 
-2. WolSSL @ https://www.wolfssl.com/
+2. WolfSSL @ https://www.wolfssl.com/
 3. SUMO @ https://sumo.dlr.de/wiki/Downloads
 4. Xerces @ https://sourceforge.net/projects/sumo/files/dependencies/ 
 
