@@ -46,6 +46,8 @@ This project is a combination of 3 sub projects:
 	Remember to place required DLL's where executables are kept	
 	
 
+NOTE : Executables present in the project will run as is (as the DLL's required at run time is present) , it is only when we need to build the project, we will require the compiler. 
+
 # Software Components
 
 1. libwebsockets binary for windows @ https://ci.appveyor.com/project/lws-team/libwebsockets 
