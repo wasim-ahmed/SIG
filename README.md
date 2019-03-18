@@ -12,7 +12,7 @@ Data is then passed to Web Server/WebSocket program, which then pushes the data 
 5. Increase the delay time to around 200 and start the simulation from SUMO GUI.
 6. Go back to browser and you should have visualization on Google map.
 
-Note : Currently project is configured for 2 vehicles only named "veh1" & "veh2", it can be easily extended for more (code changes will be required). extension in progress ! 
+Note : Currently project is configured for 2 vehicles only, named "veh1" & "veh2", it can be easily extended for more (code changes will be required). extension work in progress ! 
 
 ![alt text](https://github.com/wasim-ahmed/SIG/blob/master/SIG%20Diagram.jpg)
 
